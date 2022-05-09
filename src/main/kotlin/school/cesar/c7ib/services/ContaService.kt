@@ -8,9 +8,9 @@ import school.cesar.c7ib.util.DataUtil
 import school.cesar.c7ib.validators.ContaValidator
 import kotlin.random.Random
 
-class ContaService {
+class ContaService(
+    private val contaValidator: ContaValidator) {
 
-    private val contaValidator = ContaValidator()
 
     private fun gerarNumero(): String {
         val sequencial: String = montaSequencial()

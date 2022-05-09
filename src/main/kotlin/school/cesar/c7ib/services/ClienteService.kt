@@ -3,19 +3,21 @@ package school.cesar.c7ib.services
 import school.cesar.c7ib.entities.Cliente
 import school.cesar.c7ib.respositories.ClienteRepository
 import school.cesar.c7ib.validators.ClienteValidator
+import javax.management.loading.ClassLoaderRepository
 
-class ClienteService {
-
-    private val clienteValidator = ClienteValidator()
+class ClienteService(
+    private val clienteValidator: ClienteValidator,
+    private val clientRepository: ClienteRepository
+) {
 
     fun add(cliente: Cliente) {
         clienteValidator.valida(cliente)
-        ClienteRepository.add(cliente)
+        clientRepository.add(cliente)
     }
 
     fun buscar(cpf: String) =
-        ClienteRepository.buscar(cpf)
+        clientRepository.buscar(cpf)
 
     fun all() =
-        ClienteRepository.all()
+        clientRepository.all()
 }
